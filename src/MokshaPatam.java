@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Moksha Patam
  * A puzzle created by Zach Blick
  * for Adventures in Algorithms
  * at Menlo School in Atherton, CA
- *
+ * <p>
  * Completed by: [YOUR NAME HERE]
- *
  */
 
 public class MokshaPatam {
@@ -18,27 +19,44 @@ public class MokshaPatam {
      */
     public static int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
 
-           int count = ladderDifference(ladders);
-        ArrayList<int[]> ladderList = new ArrayList<int[]>();
+
+        Cell[] board = new Cell[boardsize];
+        initialize(board, ladders, snakes);
+        Queue<Cell> movelist = new LinkedList<Cell>();
+
+        movelist.add(board[0]);
+        while (movelist.peek().getVal() != boardsize) {
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
         return 0;
     }
-    public static void lowerBound(int[][]ladders, ArrayList<int[]> a, int upperBound) {
 
-
-
-    }
-    // Returns index of ladder with the biggest difference
-    public static int ladderDifference(int[][] ladders) {
-        int greatestDiff = 0;
-        int count = 0;
-        for (int i = 0; i < ladders.length;i++) {
-            if (greatestDiff < ladders[i][1] - ladders[i][0]) {
-                greatestDiff = ladders[i][1] - ladders[i][0];
-                count = i;
-            }
+    public static void initialize(Cell[] board, int[][] ladders, int[][] snakes) {
+        for (int i = 0; i < board.length; i++) {
+            board[i] = new Cell(i);
         }
-        return count;
+        for (int i = 0; i < ladders.length; i++) {
+            board[ladders[i][0]].setLadder(board[ladders[i][1]]);
+        }
+        for (int i = 0; i < snakes.length; i++) {
+            board[snakes[i][1]].setSnake(board[snakes[i][0]]);
+        }
+
+
     }
-    // add a method that checks if a ladder is in bounds. (useful for recursion)
+
 
 }
