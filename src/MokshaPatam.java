@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -20,43 +20,47 @@ public class MokshaPatam {
     public static int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
 
 
-        Cell[] board = new Cell[boardsize];
+        Cell[] board = new Cell[boardsize + 1];
         initialize(board, ladders, snakes);
-        Queue<Cell> movelist = new LinkedList<Cell>();
+        Queue<Cell> movelist = new LinkedList<>();
 
-        movelist.add(board[0]);
-        while (movelist.peek().getVal() != boardsize) {
+        movelist.add(board[1]);
 
+        while (movelist.peek() != null) {
+            Cell current = movelist.remove();
 
+            for (int i = 1; i <= 6; i++) {
 
-
-
-
-
-
-
-
-
+                if (board[current.getVal() + i].getVal() >= boardsize) {
+                    return current.getMove() + 1;
+                }
+                Cell diceRoll = board[current.getVal() + i];
+                if (!diceRoll.isExplored()) {
+                    diceRoll.setExplored(true);
+                    diceRoll.setMove(current.getMove() + 1);
+                    movelist.add(board[current.getVal() + i ]);
+                }
+            }
         }
 
-
-
-        return 0;
+        return -1;
     }
 
     public static void initialize(Cell[] board, int[][] ladders, int[][] snakes) {
-        for (int i = 0; i < board.length; i++) {
+        for (int i = 1; i < board.length; i++) {
             board[i] = new Cell(i);
         }
+      //  board[board.length - 1] = new Cell(board.length - 1);
+
         for (int i = 0; i < ladders.length; i++) {
-            board[ladders[i][0]].setLadder(board[ladders[i][1]]);
+            board[ladders[i][0]] = board[ladders[i][1]];
         }
         for (int i = 0; i < snakes.length; i++) {
-            board[snakes[i][1]].setSnake(board[snakes[i][0]]);
+            board[snakes[i][0]] = board[snakes[i][1]];
         }
 
 
-    }
+       }
 
 
 }
