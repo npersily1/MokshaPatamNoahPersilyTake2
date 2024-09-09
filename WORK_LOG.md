@@ -7,7 +7,7 @@ Name: YOUR NAME HERE
 | Sep 4 |  0900-0930 pm  |                                                                                                                               Made cell class. Made function to initialized board as array of cells. |
 | Sep 5 |  0300 0400 pm  |                                                                  Implemented main body loops. Much error fixed various ioob errors and using the wrong index variables  but code still does not work |
 | Sep 5 |  0900-0930 pm  |                                                                                            Fixed way the moves were being counted as wel as the way a winner is detected. Code now passes all checks |
-|       |                |                                                                                                                                                                                                      |
+| Sep 9 |  0130-0145 pm  |                                                                                                                                                                                   Comments and Style |
 |       |                |                                                                                                                                                                                                      |
 |       |                |                                                                                                                                                                                                      |
   
